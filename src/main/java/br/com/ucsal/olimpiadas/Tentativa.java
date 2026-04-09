@@ -35,7 +35,11 @@ public class Tentativa {
 	}
 
 	public List<Resposta> getRespostas() {
-		return respostas;
+    return List.copyOf(respostas);
+	}
+
+	public void adicionarResposta(Resposta resposta) {
+    this.respostas.add(resposta);
 	}
 
 }
