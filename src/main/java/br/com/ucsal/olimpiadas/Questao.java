@@ -8,8 +8,9 @@ public class Questao {
 	private long provaId;
 
 	private String enunciado;
-	private String[] alternativas = new String[5];
+	private String[] alternativas = new String[TOTAL_ALTERNATIVAS];
 	private char alternativaCorreta;
+	private static final int TOTAL_ALTERNATIVAS = 5;
 
 	private String fenInicial;
 
@@ -46,13 +47,13 @@ public class Questao {
 	}
 
 	public String[] getAlternativas() {
-		return alternativas;
+    return Arrays.copyOf(alternativas, TOTAL_ALTERNATIVAS);
 	}
 
 	public void setAlternativas(String[] alternativas) {
-		if (alternativas == null || alternativas.length != 5) {
+		if (alternativas == null || alternativas.length != TOTAL_ALTERNATIVAS)
 			throw new IllegalArgumentException("A questão deve possuir exatamente 5 alternativas.");
-		}
+		
 		this.alternativas = Arrays.copyOf(alternativas, 5);
 	}
 
@@ -70,10 +71,8 @@ public class Questao {
 
 	public static char normalizar(char c) {
 		char up = Character.toUpperCase(c);
-		if (up < 'A' || up > 'E') {
+		if (up < 'A' || up >= 'A' + TOTAL_ALTERNATIVAS)
 			throw new IllegalArgumentException("Alternativa deve estar entre A e E.");
-		}
 		return up;
 	}
-
 }

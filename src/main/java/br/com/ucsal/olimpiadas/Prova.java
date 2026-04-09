@@ -5,6 +5,11 @@ public class Prova {
 	private long id;
 	private String titulo;
 
+	public Prova(long id, String titulo) {
+    this.id = id;
+    setTitulo(titulo);
+	}
+	
 	public long getId() {
 		return id;
 	}
@@ -18,7 +23,9 @@ public class Prova {
 	}
 
 	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
-
+    if (titulo == null || titulo.isBlank()) {
+        throw new IllegalArgumentException("Título obrigatório");
+    }
+    this.titulo = titulo;
+}
 }
