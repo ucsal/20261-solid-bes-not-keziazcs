@@ -25,9 +25,9 @@ public class Resposta {
 	public boolean isCorreta() {
 		return correta;
 	}
-
-	public void setCorreta(boolean correta) {
-		this.correta = correta;
-	}
+	
+	public void avaliar(Questao questao) {
+	this.correta = questao.isRespostaCorreta(this.alternativaMarcada);
+}
 
 }
